@@ -16,22 +16,7 @@ Survey analytics dashboards help organizations transform raw feedback into actio
 - **Respondents aged 25–34 represented the largest engagement group**, highlighting the target demographic.
 - **Survey responses peaked during active submission windows**, revealing organic data collection patterns.
 
-## Screenshots
 
-### Dashboard Overview
-![Dashboard Overview](https://picsum.photos/seed/dashboard/800/450)
-
-### Vote Distribution Analysis
-![Vote Distribution](https://picsum.photos/seed/chart/800/400)
-
-### Submission Trend and Word Cloud
-![Trends](https://picsum.photos/seed/trend/800/400)
-
-### Data Cleaning Pipeline
-![Cleaning Pipeline](https://picsum.photos/seed/pipeline/800/300)
-
-### Architecture Overview
-![Architecture](https://picsum.photos/seed/architecture/800/200)
 
 ## Architecture Workflow
 Raw Survey Data (CSV / Forms)  
