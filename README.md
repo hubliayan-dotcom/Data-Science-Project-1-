@@ -1,22 +1,25 @@
-# InsightPoll Visualizer: Placement-Ready Data Analytics Dashboard
+# InsightPoll Visualizer: Professional Data Analytics Portfolio
 
-A professional-grade data analytics pipeline and interactive dashboard designed to transform raw survey data into actionable strategic intelligence. This project demonstrates the full Data Analyst workflow: from synthetic data generation and backend cleaning to multi-dimensional visualization and stakeholder-ready presentation.
+A production-grade survey analytics dashboard demonstrating the full end-to-end data lifecycle. This project is specifically architected to bridge the gap between "raw, dirty survey data" and "professional strategic intelligence."
 
-## 🚀 Live Demo
-[Dashboard Preview](https://ais-dev-bsoafsyzwa4r6ovrvyeymq-50948685477.asia-southeast1.run.app)
+## 📊 Key Highlights & Portfolio Proofs
 
----
+### 1. Multi-Source Ingestion (Gap 1 Solution)
+- **CSV / Google Forms Support**: The backend engine is architected to ingest raw `.csv` and Google Form exports. It dynamically monitors the filesystem for new survey batches.
+- **Persistent Storage**: Raw data is stored in `/data/poll_data.csv` to simulate a real-world analytics environment.
 
-## 📊 Project Overview
+### 2. Explicit Data Cleaning & Integrity (Gap 2 Solution)
+- **Automated Pipeline**: Implements a dedicated preprocessing layer that handles:
+  - **Whitespace Trimming**: Removing leading/trailing noise from user inputs.
+  - **Standardization**: Title-casing categorical tools (e.g., `python` → `Python`) and specific brand casing (e.g., `power bi` → `Power BI`).
+  - **Missing Value Handling**: Attributing missing feedback text and converting satisfaction scores to strictly typed numerical formats.
+- **Proof-of-Work UI**: The dashboard includes an "Ingestion & Integrity" section displaying a side-by-side comparison of **Raw Input vs. Cleaned Output**.
 
-### 1. What Is a Poll Results Visualizer?
-Raw survey responses are often unstructured and hard to interpret. This tool automates the entire ingestion-to-insight pipeline, providing clear, interactive visualizations including bar charts, trend lines, demographic breakdowns, and qualitative feedback word clouds.
-
-### 2. Real-World Use Cases
-- **Customer Feedback Analytics**: Visualize NPS scores and product ratings.
-- **Product Market Research**: Measure feature preference rankings across demographics.
-- **Employee Engagement**: Satisfaction trends by department and tenure.
-- **Election Monitoring**: Regional vote share tracking and participation trends.
+### 3. Professional Research Visualizations (Gap 3 Solution)
+- **Donut Chart (Tool Share %)**: A high-fidelity, interactive donut chart utilizing Recharts for immediate competitive share analysis.
+- **Submission Area Trends**: Visualizing timeline growth.
+- **Sentiment Map**: Semantic term frequency cloud.
+- **Multi-dimensional Segments**: Geographical cross-tabulation.
 
 ---
 

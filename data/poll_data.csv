@@ -1,0 +1,11 @@
+respondent_id,timestamp,age_group,gender,region,preferred_tool,satisfaction,feedback
+1,2024-03-15T10:30:00Z, 25-34 ,Male,North,Python,5,Excellent experience!
+2,2024-03-16T11:45:00Z,18-24,Female, South ,excel,4,Good tool
+3,2024-03-17T09:20:00Z,45+,Non-binary,East,R,3,
+4,2024-03-18T14:10:00Z,35-44,Male,West,tableau,2,Too complex for me
+5,2024-03-19T16:55:00Z, 25-34 ,Female, North ,Python,5,Love the flexibility
+6,2024-03-20T12:00:00Z,18-24,Male,South,POWER BI,4,Great for viz
+7,2024-03-21T08:30:00Z,45+,Female,East,Excel,3,Simple and reliable
+8,2024-03-22T15:20:00Z,35-44,Non-binary,West,R,1,Hard to learn
+9,2024-03-23T11:00:00Z, 25-34 ,Male,North,python,5,The industry standard
+10,2024-03-24T13:45:00Z,18-24,Female,South,Power BI,4,Very intuitive

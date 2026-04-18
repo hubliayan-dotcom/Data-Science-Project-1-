@@ -16,6 +16,7 @@ const CHART_COLORS = ['#6366f1', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
 
 export default function App() {
   const [rawData, setRawData] = useState<PollResponse[]>([]);
+  const [pipelinePreview, setPipelinePreview] = useState<{ raw: string[], cleaned: any[] } | null>(null);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     region: 'All',
@@ -29,9 +30,14 @@ export default function App() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/poll-data');
-      const data = await res.json();
+      const [dataRes, previewRes] = await Promise.all([
+        fetch('/api/poll-data'),
+        fetch('/api/pipeline-preview')
+      ]);
+      const data = await dataRes.json();
+      const preview = await previewRes.json();
       setRawData(data);
+      setPipelinePreview(preview);
     } catch (error) {
       console.error('Failed to fetch data:', error);
     } finally {
@@ -318,8 +324,76 @@ export default function App() {
                   )}
                </div>
             </SectionCard>
-
           </div>
+
+          {/* --- Data Pipeline Integrity Section (Gap Fix) --- */}
+          <SectionCard title="Data Ingestion & Integrity Pipeline" className="lg:col-span-3">
+             <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 mt-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="px-2 py-0.5 bg-red-100 text-red-600 rounded text-[10px] font-bold uppercase tracking-wider">Raw Input</span>
+                    <h3 className="text-sm font-bold text-slate-700">Source CSV Preview (dirty)</h3>
+                  </div>
+                  <div className="overflow-x-auto rounded-xl border border-slate-200 bg-slate-50">
+                    <table className="w-full text-[11px] text-left">
+                      <thead>
+                        <tr className="bg-slate-100 border-b border-slate-200">
+                           {pipelinePreview?.raw[0]?.split(',').map((h, i) => (
+                             <th key={i} className="px-3 py-2 font-bold text-slate-600 truncate">{h}</th>
+                           ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pipelinePreview?.raw.slice(1).map((row, i) => (
+                          <tr key={i} className="border-b border-slate-100 last:border-0">
+                            {row.split(',').map((cell, j) => (
+                              <td key={j} className="px-3 py-2 text-slate-500 font-mono whitespace-nowrap">
+                                {cell || <span className="text-slate-300 italic">null</span>}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-[10px] text-brand-muted mt-3 italic">
+                    Note: Highlighting leading spaces, inconsistent casing, and missing values in raw survey export.
+                  </p>
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="px-2 py-0.5 bg-emerald-100 text-emerald-600 rounded text-[10px] font-bold uppercase tracking-wider">Cleaned Output</span>
+                    <h3 className="text-sm font-bold text-slate-700">Preprocessing Result (Structured)</h3>
+                  </div>
+                  <div className="overflow-x-auto rounded-xl border border-emerald-100 bg-emerald-50/10">
+                    <table className="w-full text-[11px] text-left">
+                      <thead>
+                        <tr className="bg-emerald-50 border-b border-emerald-100">
+                           {Object.keys(pipelinePreview?.cleaned[0] || {}).map((h, i) => (
+                             <th key={i} className="px-3 py-2 font-bold text-emerald-700">{h}</th>
+                           ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pipelinePreview?.cleaned.map((row, i) => (
+                          <tr key={i} className="border-b border-emerald-50 last:border-0 hover:bg-emerald-50/50 transition-colors">
+                            {Object.values(row).map((cell: any, j) => (
+                              <td key={j} className="px-3 py-2 text-brand-text font-medium whitespace-nowrap">
+                                {cell?.toString()}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-[10px] text-brand-success mt-3 font-semibold">
+                    Actions: Trimming, Title-Casing, Type Conversion (String → Number), and Missing Value Attribution applied.
+                  </p>
+                </div>
+             </div>
+          </SectionCard>
 
           {/* --- Interview Section --- */}
           <div className="bg-brand-card border border-brand-border rounded-2xl p-10 mt-12 overflow-hidden relative">
