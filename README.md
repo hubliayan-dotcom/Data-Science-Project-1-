@@ -16,6 +16,23 @@ Survey analytics dashboards help organizations transform raw feedback into actio
 - **Respondents aged 25–34 represented the largest engagement group**, highlighting the target demographic.
 - **Survey responses peaked during active submission windows**, revealing organic data collection patterns.
 
+  ## Screenshots
+
+### Dashboard Overview
+![Dashboard Overview](./ss1.png)
+
+### Vote Count Analysis
+![Vote Count Analysis](./ss2.png)
+
+### Daily Submission Trend
+![Daily Submission Trend](./ss3.png)
+
+### Data Cleaning Pipeline
+![Data Cleaning Pipeline](./ss4.png)
+
+### Architecture Summary
+![Architecture Summary](./ss5.png)
+
 
 
 ## Architecture Workflow
