@@ -52,14 +52,6 @@ A production-grade survey analytics dashboard demonstrating the full end-to-end 
 
 ---
 
-## Screenshots
-
-![Screenshot 1](ss1.png)
-![Screenshot 2](ss2.png)
-![Screenshot 3](ss3.png)
-![Screenshot 4](ss4.png)
-![Screenshot 5](ss5.png)
-
 ## 📐 Data Flow Architecture
 
 The project follows a rigorous 5-stage pipeline:
