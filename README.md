@@ -1,38 +1,82 @@
-# InsightPoll Visualizer: Professional Data Analytics Portfolio
+# InsightPoll Visualizer
 
-A production-grade survey analytics dashboard demonstrating the full end-to-end data lifecycle. This project is specifically architected to bridge the gap between "raw, dirty survey data" and "professional strategic intelligence."
+An end-to-end survey analytics dashboard that ingests poll responses, cleans raw survey data, performs aggregation analysis, and generates interactive visual insights for decision-making.
 
-## 📊 Key Highlights & Portfolio Proofs
+The project demonstrates core data analyst workflows including data preprocessing, KPI generation, segmentation analysis, and dashboard reporting using modern web technologies.
 
-### 1. Multi-Source Ingestion (Gap 1 Solution)
-- **CSV / Google Forms Support**: The backend engine is architected to ingest raw `.csv` and Google Form exports. It dynamically monitors the filesystem for new survey batches.
-- **Persistent Storage**: Raw data is stored in `/data/poll_data.csv` to simulate a real-world analytics environment.
+## Live Demo
+🔗 [View Live Dashboard](https://ais-dev-bsoafsyzwa4r6ovrvyeymq-50948685477.asia-southeast1.run.app)
 
-### 2. Explicit Data Cleaning & Integrity (Gap 2 Solution)
-- **Automated Pipeline**: Implements a dedicated preprocessing layer that handles:
-  - **Whitespace Trimming**: Removing leading/trailing noise from user inputs.
-  - **Standardization**: Title-casing categorical tools (e.g., `python` → `Python`) and specific brand casing (e.g., `power bi` → `Power BI`).
-  - **Missing Value Handling**: Attributing missing feedback text and converting satisfaction scores to strictly typed numerical formats.
-- **Proof-of-Work UI**: The dashboard includes an "Ingestion & Integrity" section displaying a side-by-side comparison of **Raw Input vs. Cleaned Output**.
+## Business Value
+Survey analytics dashboards help organizations transform raw feedback into actionable insights. This project simulates how analytics teams process poll responses, monitor satisfaction metrics, identify regional trends, and support business decisions through interactive dashboards. It is directly aligned with roles such as **Data Analyst**, **BI Analyst**, and **Product Analytics**.
 
-### 3. Professional Research Visualizations (Gap 3 Solution)
-- **Donut Chart (Tool Share %)**: A high-fidelity, interactive donut chart utilizing Recharts for immediate competitive share analysis.
-- **Submission Area Trends**: Visualizing timeline growth.
-- **Sentiment Map**: Semantic term frequency cloud.
-- **Multi-dimensional Segments**: Geographical cross-tabulation.
+## Sample Insights Generated
+- **Python emerged as the most preferred tool** with a 35% vote share.
+- **The North region showed the highest average satisfaction score**, indicating localized success.
+- **Respondents aged 25–34 represented the largest engagement group**, highlighting the target demographic.
+- **Survey responses peaked during active submission windows**, revealing organic data collection patterns.
+
+## Screenshots
+
+### Dashboard Overview
+![Dashboard Overview](https://picsum.photos/seed/dashboard/800/450)
+
+### Vote Distribution Analysis
+![Vote Distribution](https://picsum.photos/seed/chart/800/400)
+
+### Submission Trend and Word Cloud
+![Trends](https://picsum.photos/seed/trend/800/400)
+
+### Data Cleaning Pipeline
+![Cleaning Pipeline](https://picsum.photos/seed/pipeline/800/300)
+
+### Architecture Overview
+![Architecture](https://picsum.photos/seed/architecture/800/200)
+
+## Architecture Workflow
+Raw Survey Data (CSV / Forms)  
+↓  
+Data Cleaning Pipeline  
+↓  
+Aggregation & KPI Calculation  
+↓  
+Interactive Dashboard  
+↓  
+Insights & Reporting
+
+## Key Features
+- **Automated survey data preprocessing**: Trimming, casing, and null handling.
+- **KPI metrics dashboard**: Total responses, satisfaction scores, and top trends.
+- **Region-wise and demographic filtering**: Multi-dimensional segmentation.
+- **Vote distribution visualizations**: Professional bar and donut charts.
+- **Satisfaction trend analysis**: Statistical distribution of user sentiment.
+- **Feedback word cloud generation**: Qualitative theme extraction.
+- **Raw vs cleaned data comparison**: Real-time integrity verification.
+
+## Tech Stack
+- **Frontend**: React, Recharts, Tailwind CSS, Framer Motion
+- **Backend**: Node.js, Express, TypeScript
+- **Analytics**: Aggregation Pipelines, KPI Metrics, Segmentation Analysis
+- **Utilities**: Date-fns, Lucide React
+
+## Interview Highlights
+
+**Q: Why synthetic data?**  
+To simulate realistic survey distributions and demonstrate meaningful dashboard insights that mirror real-world market trends.
+
+**Q: How would this scale?**  
+By moving aggregation logic to a database layer such as PostgreSQL or BigQuery for faster analytics and using materialized views for high-volume datasets.
+
+## Future Improvements
+- **Live survey ingestion via API**: Connecting directly to Google Sheets or Typeform.
+- **Real-time dashboard refresh**: Using WebSockets for instant updates.
+- **Advanced sentiment analysis**: Integrating NLP libraries (TextBlob/VADER) for deeper feedback scoring.
+- **Database integration**: Replacing static CSV with a scalable relational database.
+- **External Export**: One-click PDF report generation or Power BI/Tableau data connector.
 
 ---
 
-## 🛠️ Tech Stack & Setup
-
-| Category | Technology |
-| :--- | :--- |
-| **Frontend** | React 19, Recharts, Framer Motion, Tailwind CSS (V4) |
-| **Backend** | Node.js, Express, TSX (Server-side Analytics Engine) |
-| **Icons & Style** | Lucide React, Inter Font Family |
-| **Utilities** | Date-fns, CLSX, Tailwind-Merge |
-
-### Installation
+## 🛠️ Installation & Setup
 
 1. **Clone the repository:**
    ```bash
@@ -49,42 +93,6 @@ A production-grade survey analytics dashboard demonstrating the full end-to-end 
    ```bash
    npm run dev
    ```
-
----
-
-## 📐 Data Flow Architecture
-
-The project follows a rigorous 5-stage pipeline:
-1. **Data Generation**: Backend script generates 400+ rows of realistic synthetic poll data with weighted distributions.
-2. **Preprocessing**: Server-side "Cleaning Pipeline" handles deduplication, null-handling (fill/drop), and type standardization.
-3. **Exploratory Analysis**: Aggregation logic calculates vote shares, satisfaction averages, and cross-tabulations.
-4. **Interactive Dashboard**: Client-side filtering allows users to segment insights by **Region** and **Age Demographic**.
-5. **Narrative Visualization**: 6 distinct chart types and KPI cards present the data story.
-
----
-
-## 📈 Dashboard Features
-
-- **KPI Metrics**: Instant scannable stats for Total Responses, Average Satisfaction, Top Tool, and Active Regions.
-- **Vote Distribution**: High-fidelity Bar Chart showing tool preference volume.
-- **Market Share**: Donut-style Pie Chart for percentage-based competitive analysis.
-- **Submission Trends**: Area chart visualizing organic respondent growth over time.
-- **Satisfaction Distribution**: Histogram mapping user sentiment from 1 (Poor) to 5 (Excellent).
-- **Sentiment Map**: Semantic "Word Cloud" extracting qualitative themes from open-text feedback.
-- **Regional Segmentation**: Horizontal stacked charts for geo-specific tool preference.
-
----
-
-## 🎓 Interview Preparation (Data Analyst Focus)
-
-**Q: Why use weighted probabilities for synthetic data?**  
-*A: To mirror real-world usage patterns (e.g., Python leading at 35%). This ensures the dashboard demonstrates "meaningful distribution" rather than just uniform random noise.*
-
-**Q: How did you handle unstructured text feedback?**  
-*A: I implemented a basic NLP preprocessing layer that tokenizes the feedback, removes stop-words (less than 3 chars), and calculates term frequency to generate the sentiment word cloud.*
-
-**Q: How would you scale this for 1,000,000 records?**  
-*A: I would move the cleaning and aggregation logic from the app layer to the database layer (OLAP), using partitioned SQL or Google BigQuery to serve pre-aggregated views to the dashboard.*
 
 ---
 

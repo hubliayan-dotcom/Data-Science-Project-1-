@@ -263,6 +263,33 @@ export default function App() {
               </div>
             </SectionCard>
 
+            <SectionCard title="Market Share %">
+              <div className="h-[320px] w-full mt-6 relative">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={toolCountData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={80}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {toolCountData.map((_, index) => (
+                        <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip contentStyle={{ borderRadius: '12px', border: '1px solid #e2e8f0' }} />
+                    <Legend iconType="circle" />
+                  </PieChart>
+                </ResponsiveContainer>
+                <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
+                  <span className="text-xl font-bold text-slate-700 block line-height-1">Share</span>
+                </div>
+              </div>
+            </SectionCard>
+
             <SectionCard title="Satisfaction Distribution">
               <div className="h-[280px] w-full mt-6">
                 <ResponsiveContainer width="100%" height="100%">
